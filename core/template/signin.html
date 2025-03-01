@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<!-- Coding by CodingLab | www.codinglabweb.com-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<title> Registration or Sign Up form in HTML CSS | CodingLab </title>-->
+    <link rel="stylesheet" href="{% static 'css\signup.css' %}">
+  <link rel="stylesheet" href="{% static 'plugins/bootstrap/bootstrap.min.css' %}">
+
+   </head>
+   <nav class="navbar navbar-expand-lg navigation" id="navbar">
+		<div class="container">
+			<a class="navbar-brand" href="{% url 'index' %}">
+				<img src="{% static 'images/logo.png' %}"  class="img-fluid">
+			</a>
+
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"
+				aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="icofont-navigation-menu"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarmain">
+			
+			</div>
+		</div>
+	</nav>
+<body>
+ 
+  <div class="wrapper">
+    <h2>Login</h2>
+    {% if messages %}
+    {% for message in messages %}
+        <p style="color:Red">{{message}}</p>
+
+    {% endfor %}
+{% endif %}
+    <form action="{% url 'signin' %}" method="POST">
+      {% csrf_token %}
+      <div class="input-box">
+        <input type="text" placeholder="Enter your username" name="username" required>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Enter your password" name="password" required>
+      </div>
+    
+      
+      <div class="input-box button">
+        <input type="Submit" value="Login">
+      </div>
+      <div class="text">
+        <h3>Already have an account? <a href="{% url 'signup' %}">Register now</a></h3>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
